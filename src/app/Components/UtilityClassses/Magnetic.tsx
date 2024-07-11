@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, ReactNode, ReactElement } from "react";
+import React, { useEffect, useRef, ReactElement } from "react";
 import gsap from "gsap";
 
 interface MagneticProps {
@@ -35,14 +35,14 @@ const Magnetic: React.FC<MagneticProps> = ({ children }) => {
       yTo(0);
     };
 
-    magnetic.current.addEventListener("mousemove", handleMouseMove);
-    magnetic.current.addEventListener("mouseleave", handleMouseLeave);
+    const element = magnetic.current;
+
+    element.addEventListener("mousemove", handleMouseMove);
+    element.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      if (magnetic.current) {
-        magnetic.current.removeEventListener("mousemove", handleMouseMove);
-        magnetic.current.removeEventListener("mouseleave", handleMouseLeave);
-      }
+      element.removeEventListener("mousemove", handleMouseMove);
+      element.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 

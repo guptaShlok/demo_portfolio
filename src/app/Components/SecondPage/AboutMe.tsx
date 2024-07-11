@@ -42,7 +42,10 @@ const AboutMe = () => {
           <div className="m-0 text-4xl leading-10 px-5">
             {phrase.split(" ").map((word, index) => {
               return (
-                <div className={"relative overflow-hidden px-1 inline-flex"}>
+                <div
+                  key={index}
+                  className={"relative overflow-hidden px-1 inline-flex"}
+                >
                   <motion.span
                     variants={slideUp}
                     custom={index}
